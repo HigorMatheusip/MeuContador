@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Namoro - Ana Clara ❤️ Higor Matheus</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #ffe6f2;
+            color: #d63384;
+            padding: 20px;
+        }
+
+        .nomes {
+            font-family: 'Dancing Script', cursive;
+            font-size: 40px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .coracao {
+            color: red;
+            font-size: 50px;
+        }
+
+        .contador {
+            font-size: 24px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        img {
+            margin: 20px 0;
+            width: 200px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contador de Namoro</h1>
+
+    <div class="nomes">Ana Clara</div>
+    <div class="coracao">❤️</div>
+    <div class="nomes">Higor Matheus</div>
+
+    <img src="imagens/macaco.png" alt="Macacos apaixonados">
+
+    <h2>Estamos juntos há:</h2>
+    <div class="contador" id="contador"></div>
+
+    <script>
+        function atualizarContador() {
+            const inicioNamoro = new Date("2023-05-21T19:55:00");
+            const agora = new Date();
+            const diferenca = agora - inicioNamoro;
+
+            const anos = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 365));
+            const meses = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+            const dias = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+            document.getElementById("contador").innerHTML =
+                `${anos} ano${anos !== 1 ? 's' : ''}, ${meses} mes${meses !== 1 ? 'es' : ''}, ` +
+                `${dias} dia${dias !== 1 ? 's' : ''}, ${horas}h ${minutos}m ${segundos}s`;
+        }
+
+        setInterval(atualizarContador, 1000);
+        atualizarContador();
+    </script>
+</body>
+</html>
